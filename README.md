@@ -4,7 +4,7 @@
 
 ## Unduh File ISO
 - **Nama File:** `RescueOS-24.04.5-amd64.iso` (5,4 GB)
-- **Tautan Google Drive:** `[Tempel Link Google Drive ISO di Sini]`
+- **Tautan Google Drive:** `https://drive.google.com/file/d/1sLOyG8vowfhIf6vKsmCc7_XW4jroEvew/view`
 - **Verifikasi Integritas:** File checksum `.sha256` dan `.md5` tersedia di folder `configs/`.
 
 ## Perbandingan Sebelum vs. Sesudah Kustomisasi
