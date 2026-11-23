@@ -1,8 +1,8 @@
-# 🛡️ RescueOS — Clawix Edition (v22.04.5 LTS)
+# RescueOS — Clawix Edition (v22.04.5 LTS)
 
 **RescueOS (Clawix Edition)** adalah distribusi Linux kustom berbasis **Ubuntu 22.04.5 LTS (Jammy Jellyfish)** dengan lingkungan desktop ringan **XFCE4** yang dirancang khusus untuk keperluan *system recovery*, manajemen partisi, pemulihan data, forensik digital, serta diagnostik jaringan dan perangkat keras.
 
-## 📂 Progres Pengembangan
+## Progres Pengembangan
 
 | Tahap | Fokus Pengembangan | Status | Dokumentasi |
 | :---: | :--- | :---: | :--- |
