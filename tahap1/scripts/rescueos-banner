@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+import os, re, shutil, subprocess
+
+B, C, W, S, G, Y, R = "\033[1;96m", "\033[96m", "\033[97m", "\033[37m", "\033[1;92m", "\033[1;93m", "\033[0m"
+ansi = re.compile(r'\x1b\[[0-9;]*m')
+
+def pad(txt, width):
+    vis = len(ansi.sub('', txt))
+    return txt + (" " * max(0, width - vis))
+
+def bar(pct, w=10):
+    pct = max(0, min(100, int(pct)))
+    f = round(w * pct / 100)
+    col = G if pct < 70 else (Y if pct < 90 else "\033[1;91m")
+    return f"{S}[{col}{'█'*f}{S}{'░'*(w-f)}]{R} {W}{pct:2d}%{R}"
+
+kern = os.uname().release.split("-")[0]
+boot = "UEFI" if os.path.exists("/sys/firmware/efi") else "Legacy BIOS"
+cpus, load = os.cpu_count() or 1, f"{os.getloadavg()[0]:.2f}"
+
+mt = ma = 0
+for l in open("/proc/meminfo"):
+    if l.startswith("MemTotal:"): mt = int(l.split()[1])
+    elif l.startswith("MemAvailable:"): ma = int(l.split()[1])
+mu = max(0, mt - ma)
+ram_b = f"{bar(mu/mt*100 if mt else 0)} {S}{mu/1048576:.1f}/{mt/1048576:.1f}G{R}"
+
+du = shutil.disk_usage("/")
+dsk_b = f"{bar(du.used/du.total*100)} {S}{du.used/(1024**3):.1f}/{du.total/(1024**3):.1f}G{R}"
+
+ips = subprocess.check_output(["hostname", "-I"], text=True).strip().split()
+ip_s = f"{G}{ips[0]} {S}(ONLINE){R}" if ips else f"{Y}Offline (Local){R}"
+
+ls = subprocess.check_output(["lsblk", "-dno", "NAME,SIZE,TYPE"], text=True).splitlines()
+devs = [f"{x.split()[0]}:{x.split()[1]}" for x in ls if len(x.split()) >= 3 and x.split()[2] in ("disk", "rom")]
+stor = " | ".join(devs) if devs else "N/A"
+
+WL, WR = 48, 42
+print(f"{B}╔{'═'*WL}╦{'═'*WR}╗{R}")
+art = [
+    ("  ██████╗ ██╗      █████╗ ██╗    ██╗██╗██╗  ██╗ ", f" {B}CLAWIX EDITION v22.04.5 LTS{R}"),
+    (" ██╔════╝ ██║     ██╔══██╗██║    ██║██║╚██╗██╔╝ ", f" {W}System Recovery & Digital Forensics{R}"),
+    (" ██║      ██║     ███████║██║ █╗ ██║██║ ╚███╔╝  ", f" {Y}Ketik 'tools' -> Menu Interaktif{R}"),
+    (" ╚██████╗ ███████╗██║  ██║╚███╔███╔╝██║ ██╔██╗  ", f" {S}Status : {G}[ SYSTEM ARMED & READY ]{R}"),
+]
+for a, r in art:
+    print(f"{B}║{C}{a}{B}║{pad(r, WR)}{B}║{R}")
+
+print(f"{B}╠{'═'*WL}╬{'═'*WR}╣{R}")
+print(f"{B}║{pad(f' {Y}[ TELEMETRI SISTEM LIVE ]{R}', WL)}{B}║{pad(f' {Y}[ PERINTAH CEPAT & ALIAS ]{R}', WR)}{B}║{R}")
+
+rows = [
+    (f" {S}OS     :{R} {W}RescueOS 22.04.5 {S}({C}{boot}{S}){R}", f" {G}>{R} {W}tools{R}          {S}(Menu GUI/CLI){R}"),
+    (f" {S}Kernel :{R} {W}{kern}{R} {S}| CPU:{R} {W}{cpus}C {S}(Load {load}){R}", f" {G}>{R} {W}sudo gparted{R}   {S}(Partisi GUI){R}"),
+    (f" {S}RAM    :{R} {ram_b}",                                    f" {G}>{R} {W}sudo testdisk{R}  {S}(Pulih Partisi){R}"),
+    (f" {S}Disk / :{R} {dsk_b}",                                    f" {G}>{R} {W}sudo photorec{R}  {S}(Pulih File){R}"),
+    (f" {S}Net IP :{R} {ip_s}",                                     f" {G}>{R} {W}sudo chntpw -i{R} {S}(Reset Pass Win){R}"),
+]
+for l, r in rows:
+    print(f"{B}║{pad(l, WL)}{B}║{pad(r, WR)}{B}║{R}")
+
+print(f"{B}╠{'═'*WL}╩{'═'*WR}╣{R}")
+print(f"{B}║{pad(f' {Y}[ STORAGE ]{R} {W}{stor}{R}', WL + WR + 1)}{B}║{R}")
+print(f"{B}╚{'═'*(WL + WR + 1)}╝{R}")

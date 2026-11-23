@@ -1,0 +1,23 @@
+#!/bin/bash
+while true; do
+  clear
+  /usr/local/bin/rescueos-banner
+  echo -e "\n\033[1;96m  [ PELUNCUR CEPAT RESCUEOS CLAWIX ]\033[0m"
+  echo -e "  \033[92m[1]\033[0m GParted (Manajemen Partisi GUI)"
+  echo -e "  \033[92m[2]\033[0m TestDisk (Pemulihan Tabel Partisi)"
+  echo -e "  \033[92m[3]\033[0m PhotoRec (Pemulihan Data & File Hilang)"
+  echo -e "  \033[92m[4]\033[0m SMART Health (Cek Kesehatan SSD/HDD)"
+  echo -e "  \033[92m[5]\033[0m Htop (Monitor Proses & Resource Real-Time)"
+  echo -e "  \033[92m[6]\033[0m Wireshark (Analisis Paket Jaringan)"
+  echo -e "  \033[93m[0]\033[0m Keluar ke Terminal\n"
+  read -rp "  Pilih nomor alat [0-6]: " p
+  case "$p" in
+    1) sudo gparted & ;;
+    2) sudo testdisk ;;
+    3) sudo photorec ;;
+    4) lsblk -dno NAME,MODEL,SIZE; read -rp "  Masukkan nama disk (misal sda): " d; sudo smartctl -a "/dev/$d" | less ;;
+    5) htop ;;
+    6) sudo wireshark & ;;
+    0) clear; /usr/local/bin/rescueos-banner; break ;;
+  esac
+done

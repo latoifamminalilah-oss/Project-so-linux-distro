@@ -1,0 +1,14 @@
+[Configuration]
+MiscMenubarDefault=FALSE
+MiscDefaultGeometry=96x29
+MiscAlwaysShowTabs=FALSE
+MiscBordersDefault=TRUE
+MiscCursorBlinks=TRUE
+BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
+BackgroundDarkness=0.86
+ColorBackground=#070b14
+ColorForeground=#e2e8f0
+ColorCursor=#00e5ff
+ColorSelection=#0e7490
+ColorSelectionUseDefault=FALSE
+FontName=Ubuntu Mono 11
