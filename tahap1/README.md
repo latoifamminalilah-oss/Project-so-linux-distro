@@ -5,7 +5,7 @@ Dokumentasi lengkap proses *remastering* **RescueOS (Clawix Edition)** pada **Ta
 ## Unduh File ISO (Tahap 1)
 - **Nama File:** `RescueOS-Clawix-22.04.5-amd64.iso`
 - **Arsitektur & Boot:** 64-bit (`amd64`) — Mendukung **UEFI** & **Legacy BIOS**
-- **Tautan Unduhan:** *(Tambahkan tautan Google Drive ISO 22.04.5 setelah selesai diunggah)*
+- **Tautan Unduhan:** *(https://drive.google.com/drive/folders/1GBOxqodlAw0F769KSsTuAAmFoC00cOkF?usp=sharing)*
 
 ## Perbandingan Sebelum vs. Sesudah Kustomisasi
 
