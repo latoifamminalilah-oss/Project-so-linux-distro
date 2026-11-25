@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Clawix Cyber-Pulse
+Description=RescueOS Clawix Edition Custom Boot Splash
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/clawix
+ScriptFile=/usr/share/plymouth/themes/clawix/clawix.script
