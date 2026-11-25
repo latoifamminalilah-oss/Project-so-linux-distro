@@ -56,12 +56,17 @@ Dokumentasi lengkap proses *remastering* **RescueOS (Clawix Edition)** pada **Ta
 ### 1. Animasi Boot Splash Plymouth (Clawix Cyber-Pulse)
 ![Boot Splash](docs/01-boot-plymouth.png)
 
-### 2. Tampilan Desktop XFCE4 & Panel Transparan Clawix
+### 2. Tampilan Desktop Live XFCE4 (Clawix Edition)
 ![Desktop Live](docs/02-desktop-live.png)
 
 ### 3. Cyber Terminal HUD & Peluncur Interaktif (`tools`)
-![Terminal HUD](docs/03-terminal-hud.png)
-![Rescue Tools](docs/04-rescue-tools.png)
+![Terminal HUD & Tools](docs/03-terminal-hud.png)
 
-### 4. Verifikasi Identitas Distro (`/etc/os-release`)
-![OS Release](docs/05-os-release.png)
+### 4. Proses Instalasi Sistem Operasi ke Disk
+![Proses Instalasi](docs/04-installer-process.png)
+
+### 5. Tampilan Desktop Pasca-Instalasi Permanen
+![Desktop Terinstal](docs/05-desktop-installed.png)
+
+### 6. Verifikasi Efisiensi Memori (`free -h` — 701 MiB Idle)
+![Verifikasi RAM](docs/06-os-release-ram.png)
